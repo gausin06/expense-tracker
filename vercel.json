@@ -1,0 +1,9 @@
+
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://spendly-backend-iggo.onrender.com/api/$1"
+    }
+  ]
+}
