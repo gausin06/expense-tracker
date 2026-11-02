@@ -14,6 +14,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: process.env.NODE_ENV === 'test' ? 1000 : 20,
