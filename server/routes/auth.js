@@ -21,8 +21,12 @@ export function createAuthRouter(prisma) {
 
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
       res.status(201).json({ token, user: { id: user.id, email: user.email } });
-    } catch {
-      res.status(500).json({ error: 'Registration failed' });
+    } catch (error) {
+        console.error('Registration error:', error);
+
+        res.status(500).json({
+          error: 'Registration failed'
+      });
     }
   });
 
